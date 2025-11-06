@@ -137,7 +137,7 @@ function App() {
 
 
 
-      <div className="h-[calc(100vh_*_39)] ">
+      <div className='.h-[calc(100vh_*_39)]'>
         <div className="w-[500px] h-[500px] rounded-full overflow-hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
           <img
             src={images[index]}
