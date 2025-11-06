@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+body{
+    background-image:url("/public/gradient-svg.svg");
+}
+
+
+@font-face {
+  font-family: 'Baudot';
+  src: url('/public/chintzy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+.bg-letter {
+    font-family: Baudot;
+  font-size: 18rem;
+  font-weight: 900;
+  filter: blur(3px);
+  color: white;
+}
+
+@keyframes softFloat1 {
+  0%   { transform: translate(-3%, -3%) rotate(-2deg); }
+  50%  { transform: translate(3%, 3%) rotate(2deg); }
+  100% { transform: translate(-3%, -3%) rotate(-2deg); }
+}
+
+
+
+/* Assign durations */
+.animate-softFloat1 { animation: softFloat1 20s ease-in-out infinite; }
+
+
+@keyframes bgFloatSlow {
+  0%   { transform: translate(0%, 0%); }
+  50%  { transform: translate(-5%, 3%); }
+  100% { transform: translate(0%, 0%); }
+}
+
+.animate-bgFloatSlow {
+  animation: bgFloatSlow 35s ease-in-out infinite;
+}
