@@ -77,56 +77,44 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const handlescroll = (words) => {
-      setFade(false)
+    const handleWheel = (e) => {
+      setFade(false);
       setTimeout(() => {
-
-        if (words.deltaY > 0) {
-          setletex((next) => (next + 1) % letter.length);
-        }
-        else {
-          setletex((next) => (next - 1 + letter.length) % letter.length);
-        }
+        const forward = e.deltaY > 0; // scroll down → next word
+        setletex((prev) => (prev + (forward ? 1 : -1) + letter.length) % letter.length);
         setFade(true);
       }, 100);
     };
-    window.addEventListener("wheel", handlescroll);
 
     let startY = 0;
 
-    const handleTouchsrt = (e) => {
+    const handleTouchStart = (e) => {
       startY = e.touches[0].clientY;
-
     };
 
-    const handleTouchend = (e) => {
+    const handleTouchEnd = (e) => {
       const endY = e.changedTouches[0].clientY;
       const deltaY = startY - endY;
 
       if (Math.abs(deltaY) > 30) {
         setFade(false);
         setTimeout(() => {
-
-
-          if (deltaY > 0) {
-            setindex((prev) => (prev + 1) % letter.length);
-
-          }
-          else {
-            setindex((prev) => (prev - 1 + letter.length) % letter.length)
-          }
+          const forward = deltaY > 0; // swipe up → next word
+          setletex((prev) => (prev + (forward ? 1 : -1) + letter.length) % letter.length);
           setFade(true);
         }, 100);
       }
     };
 
-    window.addEventListener("touchstart", handleTouchsrt);
-    window.addEventListener("touchend", handleTouchend);
+    window.addEventListener("wheel", handleWheel);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchend", handleTouchEnd);
+
     return () => {
-      window.removeEventListener("wheel", handlescroll);
-      window.removeEventListener("touchstart", handleTouchsrt);
-      window.removeEventListener("touchend", handleTouchend);
-    }
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
   }, []);
 
   return (

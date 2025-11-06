@@ -7,15 +7,23 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependencies
+node_modules/
+
+# Build outputs (never commit dist)
+dist/
+dist-ssr/
+
+# Local environment configs
 *.local
 
-# Editor directories and files
+# Firebase hosting cache (safe to ignore)
+.firebase/**/hosting-cache/
+
+# Editor junk
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
